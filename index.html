@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskBro – Produtividade sem frescura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-preview">
+    <header class="app-header">
+      <button class="menu-button" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <h1>TaskBro</h1>
+    </header>
+
+    <section class="card tarefas">
+      <header class="card-header">
+        <h2>Tarefas</h2>
+        <span class="badge badge-progress">Hoje</span>
+      </header>
+      <ul class="task-list">
+        <li class="task done">
+          <span class="icon" aria-hidden="true">✔</span>
+          Finalizar relatório
+        </li>
+        <li class="task done">
+          <span class="icon" aria-hidden="true">✔</span>
+          Responder emails
+        </li>
+        <li class="task done">
+          <span class="icon" aria-hidden="true">✔</span>
+          Fazer compras
+        </li>
+      </ul>
+    </section>
+
+    <section class="card treino">
+      <header class="card-header">
+        <div class="title">
+          <span class="icon" aria-hidden="true">🏋️</span>
+          <h2>Treino</h2>
+        </div>
+        <span class="badge badge-count">1 dia</span>
+      </header>
+      <p class="card-description">Peito + tríceps hoje. Bora arregaçar!</p>
+    </section>
+
+    <section class="card alimentacao">
+      <header class="card-header">
+        <div class="title">
+          <span class="icon" aria-hidden="true">🍏</span>
+          <h2>Alimentação</h2>
+        </div>
+        <span class="badge badge-progress">Macro ok</span>
+      </header>
+      <ul class="nutrition-list">
+        <li>
+          <span class="dot"></span>
+          180g proteína — shakes + frango
+        </li>
+        <li>
+          <span class="dot"></span>
+          250g carbo — arroz integral
+        </li>
+        <li>
+          <span class="dot"></span>
+          70g gorduras — nuts + azeite
+        </li>
+      </ul>
+    </section>
+
+    <section class="card metas">
+      <header class="card-header">
+        <div class="title">
+          <span class="icon" aria-hidden="true">🎯</span>
+          <h2>Metas</h2>
+        </div>
+        <span class="badge badge-progress">Reta final</span>
+      </header>
+      <div class="goals">
+        <article class="goal">
+          <h3>Projeto pessoal</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 65%"></div>
+          </div>
+          <p>Completar MVP da semana.</p>
+        </article>
+        <article class="goal">
+          <h3>Mindset</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: 80%"></div>
+          </div>
+          <p>Meditação diária concluída 5/7.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>TaskBro • Produtividade sem frescura</p>
+      <div class="rewards">
+        <span class="spark">⚡</span>
+        <span class="label">Recompensa destravada: cerveja sem culpa</span>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

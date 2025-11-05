@@ -1,0 +1,237 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1117;
+  --card: #161a23;
+  --accent: #35d26e;
+  --accent-soft: rgba(53, 210, 110, 0.2);
+  --text: #f5f7fb;
+  --muted: #778099;
+  --shadow: 0 20px 40px rgba(5, 8, 15, 0.7);
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, rgba(53, 210, 110, 0.18), transparent 55%),
+              linear-gradient(160deg, #05070a, #0f1117 55%);
+  color: var(--text);
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 2rem;
+}
+
+.app-preview {
+  width: min(360px, 100%);
+  background: var(--bg);
+  border-radius: 32px;
+  padding: 2.25rem 1.75rem 2.5rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header h1 {
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.menu-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--card);
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-button span {
+  width: 18px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--accent);
+  display: block;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 1.4rem;
+  display: grid;
+  gap: 0.9rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header .title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.card-header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.card .icon {
+  font-size: 1.1rem;
+}
+
+.badge {
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.badge-progress {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.badge-count {
+  color: #0f1117;
+  background: var(--accent);
+}
+
+.task-list {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.task.done .icon {
+  background: var(--accent);
+  color: #0f1117;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.nutrition-list {
+  display: grid;
+  gap: 0.6rem;
+  list-style: none;
+  font-size: 0.88rem;
+}
+
+.nutrition-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(53, 210, 110, 0.2);
+}
+
+.goals {
+  display: grid;
+  gap: 1rem;
+}
+
+.goal h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.progress {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  margin-block: 0.4rem;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), #72ffb5);
+  transition: width 0.3s ease;
+}
+
+.goal p {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.app-footer {
+  display: grid;
+  gap: 0.4rem;
+  text-align: center;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.rewards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.spark {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .app-preview {
+    border-radius: 26px;
+    padding: 2rem 1.5rem 2.2rem;
+  }
+}
