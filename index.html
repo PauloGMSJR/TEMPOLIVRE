@@ -25,20 +25,32 @@
         <h2>Tarefas</h2>
         <span class="badge badge-progress">Hoje</span>
       </header>
-      <ul class="task-list">
-        <li class="task done">
+      <ul class="task-list" aria-live="polite">
+        <li class="task done" tabindex="0">
           <span class="icon" aria-hidden="true">✔</span>
           Finalizar relatório
         </li>
-        <li class="task done">
+        <li class="task done" tabindex="0">
           <span class="icon" aria-hidden="true">✔</span>
           Responder emails
         </li>
-        <li class="task done">
-          <span class="icon" aria-hidden="true">✔</span>
+        <li class="task" tabindex="0">
+          <span class="icon" aria-hidden="true">•</span>
           Fazer compras
         </li>
       </ul>
+      <div class="card-actions">
+        <button class="action-button" data-type="task" aria-expanded="false">
+          + Tarefa
+        </button>
+      </div>
+      <form class="quick-add" data-type="task" hidden>
+        <label class="sr-only" for="nova-tarefa">Nova tarefa</label>
+        <div class="input-row">
+          <input id="nova-tarefa" type="text" name="task" placeholder="Escreve a missão" required>
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
     </section>
 
     <section class="card treino">
@@ -49,7 +61,24 @@
         </div>
         <span class="badge badge-count">1 dia</span>
       </header>
-      <p class="card-description">Peito + tríceps hoje. Bora arregaçar!</p>
+      <ul class="workout-list" aria-live="polite">
+        <li>
+          <span class="dot"></span>
+          Peito + tríceps hoje. Bora arregaçar!
+        </li>
+      </ul>
+      <div class="card-actions">
+        <button class="action-button" data-type="workout" aria-expanded="false">
+          + Treino
+        </button>
+      </div>
+      <form class="quick-add" data-type="workout" hidden>
+        <label class="sr-only" for="novo-treino">Novo treino</label>
+        <div class="input-row">
+          <input id="novo-treino" type="text" name="workout" placeholder="Qual é o treino?" required>
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
     </section>
 
     <section class="card alimentacao">
@@ -60,7 +89,7 @@
         </div>
         <span class="badge badge-progress">Macro ok</span>
       </header>
-      <ul class="nutrition-list">
+      <ul class="nutrition-list" aria-live="polite">
         <li>
           <span class="dot"></span>
           180g proteína — shakes + frango
@@ -74,6 +103,18 @@
           70g gorduras — nuts + azeite
         </li>
       </ul>
+      <div class="card-actions">
+        <button class="action-button" data-type="nutrition" aria-expanded="false">
+          + Refeição
+        </button>
+      </div>
+      <form class="quick-add" data-type="nutrition" hidden>
+        <label class="sr-only" for="nova-refeicao">Nova refeição</label>
+        <div class="input-row">
+          <input id="nova-refeicao" type="text" name="nutrition" placeholder="Adicionar refeição ou macro" required>
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
     </section>
 
     <section class="card metas">
@@ -110,5 +151,7 @@
       </div>
     </footer>
   </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
