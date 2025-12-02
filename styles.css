@@ -190,11 +190,56 @@ body {
   font-size: 0.88rem;
 }
 
-.workout-list li,
-.nutrition-list li {
+
+.track-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--muted);
+  outline: none;
+}
+
+.track-item .label {
+  color: inherit;
+}
+
+.track-item:focus-visible,
+.track-item:hover {
+  background: rgba(53, 210, 110, 0.16);
+  transform: translateY(-1px);
+  color: var(--text);
+}
+
+.track-item.done {
+  background: rgba(53, 210, 110, 0.18);
+  color: var(--text);
+}
+
+.track-item.done .label {
+  color: var(--text);
+}
+
+.track-item.done .dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(53, 210, 110, 0.25);
+  position: relative;
+}
+
+.track-item.done .dot::after {
+  content: '✔';
+  position: absolute;
+  inset: -1px;
+  display: grid;
+  place-content: center;
+  font-size: 0.55rem;
+  color: #0f1117;
+  font-weight: 700;
 }
 
 .dot {
@@ -203,6 +248,61 @@ body {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 4px rgba(53, 210, 110, 0.2);
+}
+
+.goal-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.82rem;
+  color: var(--muted);
+  gap: 0.5rem;
+}
+
+.goal-percent {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.goal-control {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.goal-control input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.goal-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(53, 210, 110, 0.22);
+  border: none;
+  cursor: pointer;
+}
+
+.goal-control input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  box-shadow: 0 0 0 4px rgba(53, 210, 110, 0.22);
+  cursor: pointer;
+}
+
+.goal-control input[type="range"]::-moz-range-track {
+  background: transparent;
 }
 
 .goals {

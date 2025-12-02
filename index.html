@@ -23,7 +23,7 @@
     <section class="card tarefas">
       <header class="card-header">
         <h2>Tarefas</h2>
-        <span class="badge badge-progress">Hoje</span>
+        <span class="badge badge-progress" data-tasks-badge>Hoje</span>
       </header>
       <ul class="task-list" aria-live="polite">
         <li class="task done" tabindex="0">
@@ -59,12 +59,12 @@
           <span class="icon" aria-hidden="true">🏋️</span>
           <h2>Treino</h2>
         </div>
-        <span class="badge badge-count">1 dia</span>
+        <span class="badge badge-count" data-workout-badge>1 dia</span>
       </header>
-      <ul class="workout-list" aria-live="polite">
-        <li>
+      <ul class="workout-list trackable-list" aria-live="polite">
+        <li class="track-item" data-type="workout" role="button" tabindex="0" aria-pressed="false">
           <span class="dot"></span>
-          Peito + tríceps hoje. Bora arregaçar!
+          <span class="label">Peito + tríceps hoje. Bora arregaçar!</span>
         </li>
       </ul>
       <div class="card-actions">
@@ -87,20 +87,20 @@
           <span class="icon" aria-hidden="true">🍏</span>
           <h2>Alimentação</h2>
         </div>
-        <span class="badge badge-progress">Macro ok</span>
+        <span class="badge badge-progress" data-nutrition-badge>Macro ok</span>
       </header>
-      <ul class="nutrition-list" aria-live="polite">
-        <li>
+      <ul class="nutrition-list trackable-list" aria-live="polite">
+        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
           <span class="dot"></span>
-          180g proteína — shakes + frango
+          <span class="label">180g proteína — shakes + frango</span>
         </li>
-        <li>
+        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
           <span class="dot"></span>
-          250g carbo — arroz integral
+          <span class="label">250g carbo — arroz integral</span>
         </li>
-        <li>
+        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
           <span class="dot"></span>
-          70g gorduras — nuts + azeite
+          <span class="label">70g gorduras — nuts + azeite</span>
         </li>
       </ul>
       <div class="card-actions">
@@ -126,19 +126,33 @@
         <span class="badge badge-progress">Reta final</span>
       </header>
       <div class="goals">
-        <article class="goal">
+        <article class="goal" data-goal="projeto">
           <h3>Projeto pessoal</h3>
           <div class="progress">
-            <div class="progress-bar" style="width: 65%"></div>
+            <div class="progress-bar" data-progress-bar style="width: 65%"></div>
           </div>
-          <p>Completar MVP da semana.</p>
+          <div class="goal-status">
+            <p>Completar MVP da semana.</p>
+            <span class="goal-percent" data-goal-percent>65%</span>
+          </div>
+          <label class="goal-control">
+            <span>Atualiza aí:</span>
+            <input type="range" min="0" max="100" value="65" data-goal-input>
+          </label>
         </article>
-        <article class="goal">
+        <article class="goal" data-goal="mindset">
           <h3>Mindset</h3>
           <div class="progress">
-            <div class="progress-bar" style="width: 80%"></div>
+            <div class="progress-bar" data-progress-bar style="width: 80%"></div>
           </div>
-          <p>Meditação diária concluída 5/7.</p>
+          <div class="goal-status">
+            <p>Meditação diária concluída 5/7.</p>
+            <span class="goal-percent" data-goal-percent>80%</span>
+          </div>
+          <label class="goal-control">
+            <span>Como tá a disciplina?</span>
+            <input type="range" min="0" max="100" value="80" data-goal-input>
+          </label>
         </article>
       </div>
     </section>
@@ -147,7 +161,7 @@
       <p>TaskBro • Produtividade sem frescura</p>
       <div class="rewards">
         <span class="spark">⚡</span>
-        <span class="label">Recompensa destravada: cerveja sem culpa</span>
+        <span class="label" data-reward-label>Recompensa destravada: cerveja sem culpa</span>
       </div>
     </footer>
   </main>

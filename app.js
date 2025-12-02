@@ -18,21 +18,13 @@ const sectionConfig = {
   workout: {
     listSelector: '.workout-list',
     createItem(value) {
-      const li = document.createElement('li');
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      li.append(dot, document.createTextNode(value));
-      return li;
+      return createTrackItem('workout', value);
     }
   },
   nutrition: {
     listSelector: '.nutrition-list',
     createItem(value) {
-      const li = document.createElement('li');
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      li.append(dot, document.createTextNode(value));
-      return li;
+      return createTrackItem('nutrition', value);
     }
   }
 };
@@ -41,6 +33,9 @@ function initialiseApp() {
   setupActionButtons();
   setupForms();
   setupTaskToggle();
+  setupTrackableLists();
+  setupGoalControls();
+  updateAllStats();
 }
 
 function setupActionButtons() {
@@ -77,6 +72,7 @@ function setupForms() {
       addItem(form.dataset.type, value);
       input.value = '';
       hideForm(form);
+      updateAllStats();
     });
 
     form.addEventListener('keydown', event => {
@@ -105,6 +101,7 @@ function setupTaskToggle() {
     if (!task) return;
     task.classList.toggle('done');
     updateIcon(task);
+    updateAllStats();
   });
 
   taskList.addEventListener('keydown', event => {
@@ -114,6 +111,51 @@ function setupTaskToggle() {
     event.preventDefault();
     task.classList.toggle('done');
     updateIcon(task);
+    updateAllStats();
+  });
+}
+
+function setupTrackableLists() {
+  const lists = document.querySelectorAll('.trackable-list');
+  lists.forEach(list => {
+    list.addEventListener('click', event => {
+      const item = event.target.closest('.track-item');
+      if (!item) return;
+      toggleTrackItem(item);
+    });
+
+    list.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const item = event.target.closest('.track-item');
+      if (!item) return;
+      event.preventDefault();
+      toggleTrackItem(item);
+    });
+  });
+}
+
+function setupGoalControls() {
+  const goals = document.querySelectorAll('.goal');
+  goals.forEach(goal => {
+    const input = goal.querySelector('[data-goal-input]');
+    if (!input) return;
+    const progressBar = goal.querySelector('[data-progress-bar]');
+    const percent = goal.querySelector('[data-goal-percent]');
+
+    const updateGoal = () => {
+      const value = Number.parseInt(input.value, 10) || 0;
+      if (progressBar) {
+        progressBar.style.width = `${value}%`;
+      }
+      if (percent) {
+        percent.textContent = `${value}%`;
+      }
+      goal.dataset.progress = value;
+      updateAllStats();
+    };
+
+    input.addEventListener('input', updateGoal);
+    updateGoal();
   });
 }
 
@@ -133,6 +175,8 @@ function addItem(type, value) {
       icon.textContent = '•';
     }
     requestAnimationFrame(() => item.focus());
+  } else if (item instanceof HTMLElement) {
+    requestAnimationFrame(() => item.focus());
   }
 }
 
@@ -147,6 +191,108 @@ function hideForm(form, { focusButton = false } = {}) {
       requestAnimationFrame(() => button.focus());
     }
   }
+}
+
+function createTrackItem(type, value) {
+  const li = document.createElement('li');
+  li.className = 'track-item';
+  li.dataset.type = type;
+  li.setAttribute('role', 'button');
+  li.tabIndex = 0;
+  li.setAttribute('aria-pressed', 'false');
+
+  const dot = document.createElement('span');
+  dot.className = 'dot';
+
+  const label = document.createElement('span');
+  label.className = 'label';
+  label.textContent = value;
+
+  li.append(dot, label);
+  return li;
+}
+
+function toggleTrackItem(item) {
+  const isDone = item.classList.toggle('done');
+  item.setAttribute('aria-pressed', isDone ? 'true' : 'false');
+  updateAllStats();
+}
+
+function updateAllStats() {
+  updateTaskBadge();
+  updateTrackableBadge('workout');
+  updateTrackableBadge('nutrition');
+  updateReward();
+}
+
+function updateTaskBadge() {
+  const badge = document.querySelector('[data-tasks-badge]');
+  const list = document.querySelector('.task-list');
+  if (!badge || !list) return;
+
+  const tasks = list.querySelectorAll('.task');
+  const total = tasks.length;
+  const done = list.querySelectorAll('.task.done').length;
+
+  if (!total) {
+    badge.textContent = 'Sem tarefas';
+    return;
+  }
+
+  const saldo = total - done;
+  badge.textContent = done === total
+    ? 'Tudo concluído'
+    : saldo === 1
+      ? 'Falta 1 missão'
+      : `${done}/${total} feitas`;
+}
+
+function updateTrackableBadge(type) {
+  const badgeSelector = type === 'workout' ? '[data-workout-badge]' : '[data-nutrition-badge]';
+  const badge = document.querySelector(badgeSelector);
+  const list = document.querySelector(`.${type === 'workout' ? 'workout' : 'nutrition'}-list`);
+  if (!badge || !list) return;
+
+  const items = list.querySelectorAll('.track-item');
+  const total = items.length;
+  const done = list.querySelectorAll('.track-item.done').length;
+
+  if (!total) {
+    badge.textContent = type === 'workout' ? 'Sem treinos' : 'Sem macros';
+    return;
+  }
+
+  if (done === total) {
+    badge.textContent = type === 'workout' ? 'Pump garantido' : 'Macros fechadas';
+    return;
+  }
+
+  const label = type === 'workout' ? 'treino' : 'macro';
+  badge.textContent = `${done}/${total} ${label}${total > 1 ? 's' : ''}`;
+}
+
+function updateReward() {
+  const label = document.querySelector('[data-reward-label]');
+  if (!label) return;
+
+  const tasksDone = document.querySelectorAll('.task-list .task.done').length;
+  const workoutsDone = document.querySelectorAll('.workout-list .track-item.done').length;
+  const nutritionDone = document.querySelectorAll('.nutrition-list .track-item.done').length;
+  const goals = Array.from(document.querySelectorAll('.goal')).map(goal => Number(goal.dataset.progress || 0));
+
+  const totalProgress = goals.reduce((acc, value) => acc + value, 0);
+  const xp = tasksDone * 15 + workoutsDone * 30 + nutritionDone * 10 + Math.round(totalProgress / (goals.length || 1));
+
+  let message = 'Segue firme, irmão!';
+  if (xp >= 200) {
+    message = 'Recompensa destravada: massagem esportiva';
+  } else if (xp >= 120) {
+    message = 'Recompensa destravada: noite do burger';
+  } else if (xp >= 60) {
+    message = 'Recompensa destravada: cerveja sem culpa';
+  }
+
+  label.textContent = `XP ${xp} • ${message}`;
 }
 
 document.addEventListener('DOMContentLoaded', initialiseApp);
