@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskBro – Produtividade sem frescura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-preview">
+    <header class="app-header">
+      <button class="menu-button" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <h1>TaskBro</h1>
+    </header>
+
+    <section class="card tarefas">
+      <header class="card-header">
+        <h2>Tarefas</h2>
+        <span class="badge badge-progress" data-tasks-badge>Hoje</span>
+      </header>
+      <ul class="task-list" aria-live="polite">
+        <li class="task done" tabindex="0">
+          <span class="icon" aria-hidden="true">✔</span>
+          Finalizar relatório
+        </li>
+        <li class="task done" tabindex="0">
+          <span class="icon" aria-hidden="true">✔</span>
+          Responder emails
+        </li>
+        <li class="task" tabindex="0">
+          <span class="icon" aria-hidden="true">•</span>
+          Fazer compras
+        </li>
+      </ul>
+      <div class="card-actions">
+        <button class="action-button" data-type="task" aria-expanded="false">
+          + Tarefa
+        </button>
+      </div>
+      <form class="quick-add" data-type="task" hidden>
+        <label class="sr-only" for="nova-tarefa">Nova tarefa</label>
+        <div class="input-row">
+          <input id="nova-tarefa" type="text" name="task" placeholder="Escreve a missão" required>
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card treino">
+      <header class="card-header">
+        <div class="title">
+          <span class="icon" aria-hidden="true">🏋️</span>
+          <h2>Treino</h2>
+        </div>
+        <span class="badge badge-count" data-workout-badge>1 dia</span>
+      </header>
+      <ul class="workout-list trackable-list" aria-live="polite">
+        <li class="track-item" data-type="workout" role="button" tabindex="0" aria-pressed="false">
+          <span class="dot"></span>
+          <span class="label">Peito + tríceps hoje. Bora arregaçar!</span>
+        </li>
+      </ul>
+      <div class="card-actions">
+        <button class="action-button" data-type="workout" aria-expanded="false">
+          + Treino
+        </button>
+      </div>
+      <form class="quick-add" data-type="workout" hidden>
+        <label class="sr-only" for="novo-treino">Novo treino</label>
+        <div class="input-row">
+          <input id="novo-treino" type="text" name="workout" placeholder="Qual é o treino?" required>
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card alimentacao">
+      <header class="card-header">
+        <div class="title">
+          <span class="icon" aria-hidden="true">🍏</span>
+          <h2>Alimentação</h2>
+        </div>
+        <span class="badge badge-progress" data-nutrition-badge>Macro ok</span>
+      </header>
+      <ul class="nutrition-list trackable-list" aria-live="polite">
+        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
+          <span class="dot"></span>
+          <span class="label">180g proteína — shakes + frango</span>
+        </li>
+        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
+          <span class="dot"></span>
+          <span class="label">250g carbo — arroz integral</span>
+        </li>
+        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
+          <span class="dot"></span>
+          <span class="label">70g gorduras — nuts + azeite</span>
+        </li>
+      </ul>
+      <div class="card-actions">
+        <button class="action-button" data-type="nutrition" aria-expanded="false">
+          + Refeição
+        </button>
+      </div>
+      <form class="quick-add" data-type="nutrition" hidden>
+        <label class="sr-only" for="nova-refeicao">Nova refeição</label>
+        <div class="input-row">
+          <input id="nova-refeicao" type="text" name="nutrition" placeholder="Adicionar refeição ou macro" required>
+          <button type="submit">Adicionar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card metas">
+      <header class="card-header">
+        <div class="title">
+          <span class="icon" aria-hidden="true">🎯</span>
+          <h2>Metas</h2>
+        </div>
+        <span class="badge badge-progress">Reta final</span>
+      </header>
+      <div class="goals">
+        <article class="goal" data-goal="projeto">
+          <h3>Projeto pessoal</h3>
+          <div class="progress">
+            <div class="progress-bar" data-progress-bar style="width: 65%"></div>
+          </div>
+          <div class="goal-status">
+            <p>Completar MVP da semana.</p>
+            <span class="goal-percent" data-goal-percent>65%</span>
+          </div>
+          <label class="goal-control">
+            <span>Atualiza aí:</span>
+            <input type="range" min="0" max="100" value="65" data-goal-input>
+          </label>
+        </article>
+        <article class="goal" data-goal="mindset">
+          <h3>Mindset</h3>
+          <div class="progress">
+            <div class="progress-bar" data-progress-bar style="width: 80%"></div>
+          </div>
+          <div class="goal-status">
+            <p>Meditação diária concluída 5/7.</p>
+            <span class="goal-percent" data-goal-percent>80%</span>
+          </div>
+          <label class="goal-control">
+            <span>Como tá a disciplina?</span>
+            <input type="range" min="0" max="100" value="80" data-goal-input>
+          </label>
+        </article>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>TaskBro • Produtividade sem frescura</p>
+      <div class="rewards">
+        <span class="spark">⚡</span>
+        <span class="label" data-reward-label>Recompensa destravada: cerveja sem culpa</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
