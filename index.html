@@ -20,192 +20,196 @@
       <h1>TaskBro</h1>
     </header>
 
-    <nav class="tab-bar" role="tablist" aria-label="Seções do TaskBro">
-      <button class="tab-button is-active" type="button" id="tab-tarefas-button" role="tab" aria-selected="true" data-tab-target="tarefas">Tarefas</button>
-      <button class="tab-button" type="button" id="tab-treino-button" role="tab" aria-selected="false" data-tab-target="treino">Treino</button>
-      <button class="tab-button" type="button" id="tab-alimentacao-button" role="tab" aria-selected="false" data-tab-target="alimentacao">Alimentação</button>
-      <button class="tab-button" type="button" id="tab-metas-button" role="tab" aria-selected="false" data-tab-target="metas">Metas</button>
-      <button class="tab-button" type="button" id="tab-achievements-button" role="tab" aria-selected="false" data-tab-target="achievements">Achievements</button>
-    </nav>
+    <section class="tab-shell card">
+      <nav class="tab-bar" role="tablist" aria-label="Seções do TaskBro">
+        <button class="tab-button is-active" type="button" id="tab-tarefas-button" role="tab" aria-selected="true" data-tab-target="tarefas">Tarefas</button>
+        <button class="tab-button" type="button" id="tab-treino-button" role="tab" aria-selected="false" data-tab-target="treino">Treino</button>
+        <button class="tab-button" type="button" id="tab-alimentacao-button" role="tab" aria-selected="false" data-tab-target="alimentacao">Alimentação</button>
+        <button class="tab-button" type="button" id="tab-metas-button" role="tab" aria-selected="false" data-tab-target="metas">Metas</button>
+        <button class="tab-button" type="button" id="tab-achievements-button" role="tab" aria-selected="false" data-tab-target="achievements">Achievements</button>
+      </nav>
 
-    <section class="card tab-panel tarefas is-active" id="tab-tarefas" role="tabpanel" aria-labelledby="tab-tarefas-button" data-tab-panel="tarefas">
-      <header class="card-header">
-        <h2>Tarefas</h2>
-        <span class="badge badge-progress" data-tasks-badge>Hoje</span>
-      </header>
-      <ul class="task-list" aria-live="polite">
-        <li class="task done" tabindex="0">
-          <span class="icon" aria-hidden="true">✔</span>
-          Finalizar relatório
-        </li>
-        <li class="task done" tabindex="0">
-          <span class="icon" aria-hidden="true">✔</span>
-          Responder emails
-        </li>
-        <li class="task" tabindex="0">
-          <span class="icon" aria-hidden="true">•</span>
-          Fazer compras
-        </li>
-      </ul>
-      <div class="card-actions">
-        <button class="action-button" data-type="task" aria-expanded="false">
-          + Tarefa
-        </button>
-      </div>
-      <form class="quick-add" data-type="task" hidden>
-        <label class="sr-only" for="nova-tarefa">Nova tarefa</label>
-        <div class="input-row">
-          <input id="nova-tarefa" type="text" name="task" placeholder="Escreve a missão" required>
-          <button type="submit">Adicionar</button>
-        </div>
-      </form>
-    </section>
+      <div class="tab-panels">
+        <section class="tab-panel tarefas is-active" id="tab-tarefas" role="tabpanel" aria-labelledby="tab-tarefas-button" data-tab-panel="tarefas">
+          <header class="card-header">
+            <h2>Tarefas</h2>
+            <span class="badge badge-progress" data-tasks-badge>Hoje</span>
+          </header>
+          <ul class="task-list" aria-live="polite">
+            <li class="task done" tabindex="0">
+              <span class="icon" aria-hidden="true">✔</span>
+              Finalizar relatório
+            </li>
+            <li class="task done" tabindex="0">
+              <span class="icon" aria-hidden="true">✔</span>
+              Responder emails
+            </li>
+            <li class="task" tabindex="0">
+              <span class="icon" aria-hidden="true">•</span>
+              Fazer compras
+            </li>
+          </ul>
+          <div class="card-actions">
+            <button class="action-button" data-type="task" aria-expanded="false">
+              + Tarefa
+            </button>
+          </div>
+          <form class="quick-add" data-type="task" hidden>
+            <label class="sr-only" for="nova-tarefa">Nova tarefa</label>
+            <div class="input-row">
+              <input id="nova-tarefa" type="text" name="task" placeholder="Escreve a missão" required>
+              <button type="submit">Adicionar</button>
+            </div>
+          </form>
+        </section>
 
-    <section class="card tab-panel treino" id="tab-treino" role="tabpanel" hidden aria-labelledby="tab-treino-button" data-tab-panel="treino">
-      <header class="card-header">
-        <div class="title">
-          <span class="icon" aria-hidden="true">🏋️</span>
-          <h2>Treino</h2>
-        </div>
-        <span class="badge badge-count" data-workout-badge>1 dia</span>
-      </header>
-      <ul class="workout-list trackable-list" aria-live="polite">
-        <li class="track-item" data-type="workout" role="button" tabindex="0" aria-pressed="false">
-          <span class="dot"></span>
-          <span class="label">Peito + tríceps hoje. Bora arregaçar!</span>
-        </li>
-      </ul>
-      <div class="card-actions">
-        <button class="action-button" data-type="workout" aria-expanded="false">
-          + Treino
-        </button>
-      </div>
-      <form class="quick-add" data-type="workout" hidden>
-        <label class="sr-only" for="novo-treino">Novo treino</label>
-        <div class="input-row">
-          <input id="novo-treino" type="text" name="workout" placeholder="Qual é o treino?" required>
-          <button type="submit">Adicionar</button>
-        </div>
-      </form>
-    </section>
+        <section class="tab-panel treino" id="tab-treino" role="tabpanel" hidden aria-labelledby="tab-treino-button" data-tab-panel="treino">
+          <header class="card-header">
+            <div class="title">
+              <span class="icon" aria-hidden="true">🏋️</span>
+              <h2>Treino</h2>
+            </div>
+            <span class="badge badge-count" data-workout-badge>1 dia</span>
+          </header>
+          <ul class="workout-list trackable-list" aria-live="polite">
+            <li class="track-item" data-type="workout" role="button" tabindex="0" aria-pressed="false">
+              <span class="dot"></span>
+              <span class="label">Peito + tríceps hoje. Bora arregaçar!</span>
+            </li>
+          </ul>
+          <div class="card-actions">
+            <button class="action-button" data-type="workout" aria-expanded="false">
+              + Treino
+            </button>
+          </div>
+          <form class="quick-add" data-type="workout" hidden>
+            <label class="sr-only" for="novo-treino">Novo treino</label>
+            <div class="input-row">
+              <input id="novo-treino" type="text" name="workout" placeholder="Qual é o treino?" required>
+              <button type="submit">Adicionar</button>
+            </div>
+          </form>
+        </section>
 
-    <section class="card tab-panel alimentacao" id="tab-alimentacao" role="tabpanel" hidden aria-labelledby="tab-alimentacao-button" data-tab-panel="alimentacao">
-      <header class="card-header">
-        <div class="title">
-          <span class="icon" aria-hidden="true">🍏</span>
-          <h2>Alimentação</h2>
-        </div>
-        <span class="badge badge-progress" data-nutrition-badge>Macro ok</span>
-      </header>
-      <ul class="nutrition-list trackable-list" aria-live="polite">
-        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
-          <span class="dot"></span>
-          <span class="label">180g proteína — shakes + frango</span>
-        </li>
-        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
-          <span class="dot"></span>
-          <span class="label">250g carbo — arroz integral</span>
-        </li>
-        <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
-          <span class="dot"></span>
-          <span class="label">70g gorduras — nuts + azeite</span>
-        </li>
-      </ul>
-      <div class="card-actions">
-        <button class="action-button" data-type="nutrition" aria-expanded="false">
-          + Refeição
-        </button>
-      </div>
-      <form class="quick-add" data-type="nutrition" hidden>
-        <label class="sr-only" for="nova-refeicao">Nova refeição</label>
-        <div class="input-row">
-          <input id="nova-refeicao" type="text" name="nutrition" placeholder="Adicionar refeição ou macro" required>
-          <button type="submit">Adicionar</button>
-        </div>
-      </form>
-    </section>
+        <section class="tab-panel alimentacao" id="tab-alimentacao" role="tabpanel" hidden aria-labelledby="tab-alimentacao-button" data-tab-panel="alimentacao">
+          <header class="card-header">
+            <div class="title">
+              <span class="icon" aria-hidden="true">🍏</span>
+              <h2>Alimentação</h2>
+            </div>
+            <span class="badge badge-progress" data-nutrition-badge>Macro ok</span>
+          </header>
+          <ul class="nutrition-list trackable-list" aria-live="polite">
+            <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
+              <span class="dot"></span>
+              <span class="label">180g proteína — shakes + frango</span>
+            </li>
+            <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
+              <span class="dot"></span>
+              <span class="label">250g carbo — arroz integral</span>
+            </li>
+            <li class="track-item" data-type="nutrition" role="button" tabindex="0" aria-pressed="false">
+              <span class="dot"></span>
+              <span class="label">70g gorduras — nuts + azeite</span>
+            </li>
+          </ul>
+          <div class="card-actions">
+            <button class="action-button" data-type="nutrition" aria-expanded="false">
+              + Refeição
+            </button>
+          </div>
+          <form class="quick-add" data-type="nutrition" hidden>
+            <label class="sr-only" for="nova-refeicao">Nova refeição</label>
+            <div class="input-row">
+              <input id="nova-refeicao" type="text" name="nutrition" placeholder="Adicionar refeição ou macro" required>
+              <button type="submit">Adicionar</button>
+            </div>
+          </form>
+        </section>
 
-    <section class="card tab-panel metas" id="tab-metas" role="tabpanel" hidden aria-labelledby="tab-metas-button" data-tab-panel="metas">
-      <header class="card-header">
-        <div class="title">
-          <span class="icon" aria-hidden="true">🎯</span>
-          <h2>Metas</h2>
-        </div>
-        <span class="badge badge-progress">Reta final</span>
-      </header>
-      <div class="goals">
-        <article class="goal" data-goal="projeto">
-          <h3>Projeto pessoal</h3>
-          <div class="progress">
-            <div class="progress-bar" data-progress-bar style="width: 65%"></div>
+        <section class="tab-panel metas" id="tab-metas" role="tabpanel" hidden aria-labelledby="tab-metas-button" data-tab-panel="metas">
+          <header class="card-header">
+            <div class="title">
+              <span class="icon" aria-hidden="true">🎯</span>
+              <h2>Metas</h2>
+            </div>
+            <span class="badge badge-progress">Reta final</span>
+          </header>
+          <div class="goals">
+            <article class="goal" data-goal="projeto">
+              <h3>Projeto pessoal</h3>
+              <div class="progress">
+                <div class="progress-bar" data-progress-bar style="width: 65%"></div>
+              </div>
+              <div class="goal-status">
+                <p>Completar MVP da semana.</p>
+                <span class="goal-percent" data-goal-percent>65%</span>
+              </div>
+              <label class="goal-control">
+                <span>Atualiza aí:</span>
+                <input type="range" min="0" max="100" value="65" data-goal-input>
+              </label>
+            </article>
+            <article class="goal" data-goal="mindset">
+              <h3>Mindset</h3>
+              <div class="progress">
+                <div class="progress-bar" data-progress-bar style="width: 80%"></div>
+              </div>
+              <div class="goal-status">
+                <p>Meditação diária concluída 5/7.</p>
+                <span class="goal-percent" data-goal-percent>80%</span>
+              </div>
+              <label class="goal-control">
+                <span>Como tá a disciplina?</span>
+                <input type="range" min="0" max="100" value="80" data-goal-input>
+              </label>
+            </article>
           </div>
-          <div class="goal-status">
-            <p>Completar MVP da semana.</p>
-            <span class="goal-percent" data-goal-percent>65%</span>
-          </div>
-          <label class="goal-control">
-            <span>Atualiza aí:</span>
-            <input type="range" min="0" max="100" value="65" data-goal-input>
-          </label>
-        </article>
-        <article class="goal" data-goal="mindset">
-          <h3>Mindset</h3>
-          <div class="progress">
-            <div class="progress-bar" data-progress-bar style="width: 80%"></div>
-          </div>
-          <div class="goal-status">
-            <p>Meditação diária concluída 5/7.</p>
-            <span class="goal-percent" data-goal-percent>80%</span>
-          </div>
-          <label class="goal-control">
-            <span>Como tá a disciplina?</span>
-            <input type="range" min="0" max="100" value="80" data-goal-input>
-          </label>
-        </article>
-      </div>
-    </section>
+        </section>
 
-    <section class="card tab-panel achievements" id="tab-achievements" role="tabpanel" hidden aria-labelledby="tab-achievements-button" data-tab-panel="achievements">
-      <header class="card-header">
-        <div class="title">
-          <span class="icon" aria-hidden="true">🏆</span>
-          <h2>Achievements</h2>
-        </div>
-        <span class="badge badge-progress" data-xp-badge>XP 0</span>
-      </header>
-      <div class="achievements-intro">
-        <p>Quanto mais missão entregue, mais respeito no TaskBro.</p>
+        <section class="tab-panel achievements" id="tab-achievements" role="tabpanel" hidden aria-labelledby="tab-achievements-button" data-tab-panel="achievements">
+          <header class="card-header">
+            <div class="title">
+              <span class="icon" aria-hidden="true">🏆</span>
+              <h2>Achievements</h2>
+            </div>
+            <span class="badge badge-progress" data-xp-badge>XP 0</span>
+          </header>
+          <div class="achievements-intro">
+            <p>Quanto mais missão entregue, mais respeito no TaskBro.</p>
+          </div>
+          <ul class="achievement-list" data-achievement-list>
+            <li class="achievement" data-threshold="40">
+              <div class="achievement-info">
+                <span class="title">Modo Focado</span>
+                <span class="description">Completa tarefas básicas e aquece o motor.</span>
+              </div>
+              <span class="status" aria-hidden="true">40 XP</span>
+            </li>
+            <li class="achievement" data-threshold="80">
+              <div class="achievement-info">
+                <span class="title">Consistência Bruta</span>
+                <span class="description">Treino + macro alinhados sem dar desculpa.</span>
+              </div>
+              <span class="status" aria-hidden="true">80 XP</span>
+            </li>
+            <li class="achievement" data-threshold="140">
+              <div class="achievement-info">
+                <span class="title">Alpha Discipline</span>
+                <span class="description">Metas batidas e rotina fechada na semana.</span>
+              </div>
+              <span class="status" aria-hidden="true">140 XP</span>
+            </li>
+            <li class="achievement" data-threshold="220">
+              <div class="achievement-info">
+                <span class="title">Lenda do Squad</span>
+                <span class="description">Domina tudo e inspira o bonde a seguir junto.</span>
+              </div>
+              <span class="status" aria-hidden="true">220 XP</span>
+            </li>
+          </ul>
+        </section>
       </div>
-      <ul class="achievement-list" data-achievement-list>
-        <li class="achievement" data-threshold="40">
-          <div class="achievement-info">
-            <span class="title">Modo Focado</span>
-            <span class="description">Completa tarefas básicas e aquece o motor.</span>
-          </div>
-          <span class="status" aria-hidden="true">40 XP</span>
-        </li>
-        <li class="achievement" data-threshold="80">
-          <div class="achievement-info">
-            <span class="title">Consistência Bruta</span>
-            <span class="description">Treino + macro alinhados sem dar desculpa.</span>
-          </div>
-          <span class="status" aria-hidden="true">80 XP</span>
-        </li>
-        <li class="achievement" data-threshold="140">
-          <div class="achievement-info">
-            <span class="title">Alpha Discipline</span>
-            <span class="description">Metas batidas e rotina fechada na semana.</span>
-          </div>
-          <span class="status" aria-hidden="true">140 XP</span>
-        </li>
-        <li class="achievement" data-threshold="220">
-          <div class="achievement-info">
-            <span class="title">Lenda do Squad</span>
-            <span class="description">Domina tudo e inspira o bonde a seguir junto.</span>
-          </div>
-          <span class="status" aria-hidden="true">220 XP</span>
-        </li>
-      </ul>
     </section>
 
     <footer class="app-footer">
