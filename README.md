@@ -5,8 +5,8 @@ Interface conceitual e interativa do aplicativo TaskBro, um app de produtividade
 ## Como visualizar
 
 1. Abra o arquivo `index.html` diretamente no navegador ou sirva a pasta com uma extensão de servidor local.
-2. A interface agora é fluida: funciona de celulares a desktops, ajustando margens e espaçamentos sem gerar espaços vazios.
-3. Tudo aparece na mesma tela: tarefas, treino, alimentação, metas e achievements ficam lado a lado.
+2. A interface agora é fluida e compacta: funciona de celulares a desktops sem gerar espaços vazios.
+3. Tudo aparece na mesma tela em coluna única: tarefas, treino, alimentação, metas e achievements ficam empilhados para lembrar o mock móvel.
 4. Utilize os botões “+ Tarefa”, “+ Treino” e “+ Refeição” para registrar novos itens em tempo real.
 5. Clique ou use Enter/Espaço nas linhas de treinos e alimentação para marcar o que já foi cumprido.
 6. Ajuste os sliders das metas para atualizar o progresso e destravar recompensas e badges na área de achievements.
