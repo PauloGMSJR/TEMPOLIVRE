@@ -30,7 +30,6 @@ const sectionConfig = {
 };
 
 function initialiseApp() {
-  setupTabs();
   setupActionButtons();
   setupForms();
   setupTaskToggle();
@@ -58,59 +57,6 @@ function setupActionButtons() {
       }
     });
   });
-}
-
-function setupTabs() {
-  const tabs = Array.from(document.querySelectorAll('[data-tab-target]'));
-  const panels = Array.from(document.querySelectorAll('[data-tab-panel]'));
-  if (!tabs.length || !panels.length) {
-    return;
-  }
-
-  const activateTab = (target, { focusTab = true } = {}) => {
-    tabs.forEach(tab => {
-      const isActive = tab.dataset.tabTarget === target;
-      tab.classList.toggle('is-active', isActive);
-      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      tab.tabIndex = isActive ? 0 : -1;
-      if (isActive && focusTab) {
-        requestAnimationFrame(() => tab.focus());
-      }
-    });
-
-    panels.forEach(panel => {
-      const isActive = panel.dataset.tabPanel === target;
-      panel.classList.toggle('is-active', isActive);
-      panel.hidden = !isActive;
-      panel.setAttribute('aria-hidden', isActive ? 'false' : 'true');
-    });
-  };
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      activateTab(tab.dataset.tabTarget, { focusTab: false });
-    });
-
-    tab.addEventListener('keydown', event => {
-      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
-        return;
-      }
-      event.preventDefault();
-      const currentIndex = tabs.indexOf(tab);
-      if (currentIndex === -1) {
-        return;
-      }
-      const offset = event.key === 'ArrowRight' ? 1 : -1;
-      const nextIndex = (currentIndex + offset + tabs.length) % tabs.length;
-      const nextTab = tabs[nextIndex];
-      activateTab(nextTab.dataset.tabTarget);
-    });
-  });
-
-  const defaultTab = tabs.find(tab => tab.classList.contains('is-active')) ?? tabs[0];
-  if (defaultTab) {
-    activateTab(defaultTab.dataset.tabTarget, { focusTab: false });
-  }
 }
 
 function setupForms() {
@@ -354,10 +300,10 @@ function updateReward(xp) {
 }
 
 function updateAchievements(xp) {
-  const badge = document.querySelector('[data-xp-badge]');
-  if (badge) {
+  const badges = document.querySelectorAll('[data-xp-badge]');
+  badges.forEach(badge => {
     badge.textContent = `XP ${xp}`;
-  }
+  });
 
   const items = document.querySelectorAll('[data-achievement-list] .achievement');
   items.forEach(item => {
